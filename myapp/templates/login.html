@@ -1,0 +1,76 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		tr,td
+		{
+			padding: 10px;
+		}
+		table
+		{
+			background-color: lightgrey;
+		}
+    </style>
+   
+    {% block javascript %}
+    <script>
+     $("#email").change(function () {
+
+      var username = $(this).val();
+
+      $.ajax({
+        url: '/validate_login/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (!data.is_taken) {
+          document.getElementById("email_error").innerHTML="Email is already exists"
+          }
+          else{
+            document.getElementById("email_error").innerHTML=""
+          }
+        }
+      });
+
+    });
+  </script>
+{% endblock %}
+
+</head>
+<body>
+<center>
+<h1>Login</h1>
+{% if msg %}
+    {{msg}}
+{% endif %}
+{% if msg1 %}
+    your Email is not verified please<a href="{% url 'enter_email' %}">Click Here</a>To verify.
+{% endif %}
+
+<form name="login" method="POST" action="{% url 'login' %}">
+	{% csrf_token %}
+    <table>
+
+        <tr>
+    		<td>Email</td>
+    		<td><input type="text" name="email" id="email"></td>
+            <td><span id="email_error"></span>
+    	</tr>
+        <tr>
+    		<td>Password</td>
+    		<td><input type="password" name="password"></td>
+    	</tr>
+    	<tr>
+            <td>
+    	    <input type="submit" value="Login" class="btn btn-primary"></td>
+            <td><a href="{% url 'forget_password' %}"><input type="button" value="Forget_password" class="btn btn-primary"></a></td>
+    	</tr>
+    </table>
+</form>
+</body>
+</html>
+{% endblock %}

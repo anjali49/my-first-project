@@ -1,0 +1,37 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<body>
+	<center>         
+		{% if msg %}
+			{{msg}}
+		{% endif %}
+		{% if not wishlists %}
+			<h4>There Is No Book In Your Wishlist</h4>
+		{% endif %}
+	</center>
+	<div class="row">
+		{% for i in wishlists %}
+		<div id="box" class="col-sm-3" style="margin-top:15px">
+			<div class="container">
+				<div class="card" style="width:250px">
+					<img class="card-img-top" src="{{i.book.book_image.url}}" alt="card image" width="200Px" 
+					height="200px" >
+					<div class="card-body">
+						<p class="crad-title">Book Name: {{i.book.book_name}}</p>
+						<p class="card-text">Book Price: {{i.book.book_price}}</p>
+						<a href="{% url 'user_book_detail' pk=i.book.pk %}">
+						<input type="button" value="More Details" class="btn btn-primary"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	
+</div>
+</body>
+</head>
+</html>
+{% endblock %}

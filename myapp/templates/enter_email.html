@@ -1,0 +1,38 @@
+{% extends 'header.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		tr,td
+		{
+			padding: 10px;
+		}
+		table
+		{
+			background-color: lightgrey;
+		}
+    </style>
+</head>
+<body>s
+<center>
+<h1>Enter_Email</h1>
+{% if msg %}
+    {{msg}}
+{% endif %}
+<form name="enter_email" method="post" action="{% url 'enter_email' %}">
+	{% csrf_token %}
+    <table>
+    	<tr>
+    		<td>Email</td>
+    		<td><input type="text" name="email"></td>
+    	</tr>
+        <tr>
+    		<td colspan="2" align="center">
+    	    <input type="submit" value="send OTP"></td>
+    	</tr>
+    </table>
+</form>
+</body>
+</html>
+{% endblock %}

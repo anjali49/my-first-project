@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      hr
+      {
+        border-color: : black;
+      }
+    </style>
+</head>
+<body style="background-image: url('{% static 'images/book.jpg' %}')";>
+	<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <img src="{% static 'images/logo.png' %}" width="100px" height="100px" style="margin-top: -45px;">
+      <a class="navbar-brand" href="{% url 'seller_index' %}">Book Bucket</a>
+      </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'seller_index' %}">Home</a></li>
+      <li><a href="{% url 'add_book' %}">Add Books</a></li>
+      <li><a href="{% url 'view_books' %}">View Books</a></li>
+    </ul>
+    {% if request.session.fname %}
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-log-out"></span>Logout{{request.session.fname}}</a></li>
+       <li><img src="{{request.session.user_image}}" height="50px" width="50px"></li>
+     </ul>
+    {% else %}
+     <ul class="nav navbar-nav navbar-right">
+      <li><a href="{% url 'signup' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+     </ul>
+    {% endif %}
+  </div>
+</nav>
+{% block content %}
+{% endblock %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
